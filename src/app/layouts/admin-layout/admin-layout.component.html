@@ -1,0 +1,43 @@
+<div class="d-flex min-vh-100">
+    <!-- Sidebar -->
+    <div class="bg-dark text-white p-3" style="width: 250px;">
+      <h4 class="text-center mb-4">Admin Panel</h4>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/dashboard" [routerLinkActive]="['active']">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/users" [routerLinkActive]="['active']">Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/membership" [routerLinkActive]="['active']">Membership</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="/pos" [routerLinkActive]="['active']">POS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">Settings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" (click)="logout()" style="cursor: pointer;">Logout</a>
+        </li>
+      </ul>
+    </div>
+  
+    <!-- Main Content -->
+    <div class="flex-grow-1">
+      <!-- Header -->
+      <nav class="navbar navbar-light bg-light border-bottom">
+        <div class="container-fluid">
+          <span class="navbar-brand mb-0 h1">{{ pageTitle }}</span>
+          <div class="d-flex align-items-center">
+            <span class="me-3">Welcome, {{ adminName || 'Admin' }}</span>
+            <button class="btn btn-outline-danger" (click)="logout()">Logout</button>
+          </div>
+        </div>
+      </nav>
+  
+      <!-- Content Area -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>

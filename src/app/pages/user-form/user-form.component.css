@@ -1,0 +1,13 @@
+/* src/app/pages/user-form/user-form.component.css */
+.card {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .form-control, .form-select {
+    border-radius: 0.375rem;
+  }
+  
+  .btn {
+    min-width: 100px;
+  }

@@ -1,0 +1,84 @@
+<!-- src/app/pages/user-form/user-form.component.html -->
+<div class="container-fluid p-4">
+    <h2 class="mb-4">{{ isEditMode ? 'Edit User' : 'Add New User' }}</h2>
+  
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+          <!-- Name Field -->
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              formControlName="name"
+              placeholder="Enter user's name"
+              [class.is-invalid]="userForm.get('name')?.invalid && userForm.get('name')?.touched"
+            />
+            <div class="invalid-feedback">
+              Name is required and must be at least 3 characters long.
+            </div>
+          </div>
+  
+          <!-- Email Field -->
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              formControlName="email"
+              placeholder="Enter user's email"
+              [class.is-invalid]="userForm.get('email')?.invalid && userForm.get('email')?.touched"
+            />
+            <div class="invalid-feedback">
+              Please enter a valid email address.
+            </div>
+          </div>
+  
+          <!-- Role Field -->
+          <div class="mb-3">
+            <label for="role" class="form-label">Role</label>
+            <select
+              class="form-select"
+              id="role"
+              formControlName="role"
+              [class.is-invalid]="userForm.get('role')?.invalid && userForm.get('role')?.touched"
+            >
+              <option value="" disabled>Select a role</option>
+              <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+            </select>
+            <div class="invalid-feedback">
+              Role is required.
+            </div>
+          </div>
+  
+          <!-- Status Field -->
+          <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <select
+              class="form-select"
+              id="status"
+              formControlName="status"
+              [class.is-invalid]="userForm.get('status')?.invalid && userForm.get('status')?.touched"
+            >
+              <option value="" disabled>Select a status</option>
+              <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
+            </select>
+            <div class="invalid-feedback">
+              Status is required.
+            </div>
+          </div>
+  
+          <!-- Buttons -->
+          <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-secondary me-2" (click)="onCancel()">Cancel</button>
+            <button type="submit" class="btn btn-success" [disabled]="userForm.invalid">
+              {{ isEditMode ? 'Update User' : 'Add User' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

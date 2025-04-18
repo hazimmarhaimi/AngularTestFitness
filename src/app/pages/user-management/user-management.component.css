@@ -1,0 +1,12 @@
+/* src/app/pages/user-management/user-management.component.css */
+.table th, .table td {
+    vertical-align: middle;
+  }
+  
+  .badge {
+    font-size: 0.9em;
+  }
+  
+  .btn-sm {
+    padding: 0.25rem 0.5rem;
+  }

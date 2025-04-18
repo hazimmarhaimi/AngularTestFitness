@@ -31,7 +31,7 @@
           <div *ngIf="errorMessage" class="alert alert-danger mb-3">
             {{ errorMessage }}
           </div>
-          <button type="submit" class="btn btn-success w-100 mb-3" [disabled]="loginForm.invalid">Sign In</button>
+          <button type="submit" class="btn btn-success w-100 mb-3" [disabled]="loginForm.invalid"><span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>Sign In</button>
         </form>
         <div class="text-center">
           <a href="#" class="text-success text-decoration-none">Forgot your password?</a>

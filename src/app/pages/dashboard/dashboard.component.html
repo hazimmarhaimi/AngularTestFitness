@@ -1,107 +1,71 @@
 <!-- src/app/pages/dashboard/dashboard.component.html -->
-<div class="d-flex min-vh-100">
-  <!-- Sidebar -->
-  <div class="bg-dark text-white p-3" style="width: 250px;">
-    <h4 class="text-center mb-4">Admin Panel</h4>
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link text-white active" href="#">Dashboard</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" href="#">Users</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" href="#">Settings</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" (click)="logout()" style="cursor: pointer;">Logout</a>
-      </li>
-    </ul>
+<div class="container-fluid p-4">
+  <h2 class="mb-4">Overview</h2>
+  <div class="row">
+    <!-- User Stats Widget -->
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">Total Users</h5>
+          <p class="card-text display-4 text-success">1,245</p>
+          <small class="text-muted">+5% from last month</small>
+        </div>
+      </div>
+    </div>
+    <!-- Activity Widget -->
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">Active Sessions</h5>
+          <p class="card-text display-4 text-primary">342</p>
+          <small class="text-muted">Updated 5 mins ago</small>
+        </div>
+      </div>
+    </div>
+    <!-- Revenue Widget -->
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-body text-center">
+          <h5 class="card-title">Revenue</h5>
+          <p class="card-text display-4 text-warning">$12,500</p>
+          <small class="text-muted">This month</small>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Main Content -->
-  <div class="flex-grow-1">
-    <!-- Header -->
-    <nav class="navbar navbar-light bg-light border-bottom">
-      <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">Admin Dashboard</span>
-        <div class="d-flex align-items-center">
-          <span class="me-3">Welcome, {{ adminName || 'Admin' }}</span>
-          <button class="btn btn-outline-danger" (click)="logout()">Logout</button>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Dashboard Content -->
-    <div class="container-fluid p-4">
-      <h2 class="mb-4">Overview</h2>
-      <div class="row">
-        <!-- User Stats Widget -->
-        <div class="col-md-4 mb-4">
-          <div class="card shadow-sm">
-            <div class="card-body text-center">
-              <h5 class="card-title">Total Users</h5>
-              <p class="card-text display-4 text-success">1,245</p>
-              <small class="text-muted">+5% from last month</small>
-            </div>
-          </div>
-        </div>
-        <!-- Activity Widget -->
-        <div class="col-md-4 mb-4">
-          <div class="card shadow-sm">
-            <div class="card-body text-center">
-              <h5 class="card-title">Active Sessions</h5>
-              <p class="card-text display-4 text-primary">342</p>
-              <small class="text-muted">Updated 5 mins ago</small>
-            </div>
-          </div>
-        </div>
-        <!-- Revenue Widget -->
-        <div class="col-md-4 mb-4">
-          <div class="card shadow-sm">
-            <div class="card-body text-center">
-              <h5 class="card-title">Revenue</h5>
-              <p class="card-text display-4 text-warning">$12,500</p>
-              <small class="text-muted">This month</small>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Recent Activity Table -->
-      <div class="card shadow-sm">
-        <div class="card-header">
-          <h5 class="mb-0">Recent Activity</h5>
-        </div>
-        <div class="card-body">
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">User</th>
-                <th scope="col">Action</th>
-                <th scope="col">Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>John Doe</td>
-                <td>Logged in</td>
-                <td>2025-04-14 10:30 AM</td>
-              </tr>
-              <tr>
-                <td>Jane Smith</td>
-                <td>Updated profile</td>
-                <td>2025-04-14 09:15 AM</td>
-              </tr>
-              <tr>
-                <td>Mike Johnson</td>
-                <td>Completed workout</td>
-                <td>2025-04-13 03:45 PM</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+  <!-- Recent Activity Table -->
+  <div class="card shadow-sm">
+    <div class="card-header">
+      <h5 class="mb-0">Recent Activity</h5>
+    </div>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">User</th>
+            <th scope="col">Action</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>John Doe</td>
+            <td>Logged in</td>
+            <td>2025-04-14 10:30 AM</td>
+          </tr>
+          <tr>
+            <td>Jane Smith</td>
+            <td>Updated profile</td>
+            <td>2025-04-14 09:15 AM</td>
+          </tr>
+          <tr>
+            <td>Mike Johnson</td>
+            <td>Completed workout</td>
+            <td>2025-04-13 03:45 PM</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

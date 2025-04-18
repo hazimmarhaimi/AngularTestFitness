@@ -1,14 +1,4 @@
 /* src/app/pages/dashboard/dashboard.component.css */
-.nav-link.active {
-  background-color: #28a745;
-  border-radius: 5px;
-}
-
-.nav-link:hover {
-  background-color: #495057;
-  border-radius: 5px;
-}
-
 .card {
   transition: transform 0.2s;
 }

@@ -1,0 +1,48 @@
+<!-- src/app/pages/user-management/user-management.component.html -->
+<div class="container-fluid p-4">
+    <h2 class="mb-4">User Management</h2>
+  
+    <!-- Add User Button -->
+    <div class="mb-3 text-end">
+      <button class="btn btn-success" (click)="addUser()">Add New User</button>
+    </div>
+  
+    <!-- Users Table -->
+    <div class="card shadow-sm">
+      <div class="card-header">
+        <h5 class="mb-0">Users List</h5>
+      </div>
+      <div class="card-body">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Role</th>
+              <th scope="col">Status</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.id }}</td>
+              <td>{{ user.name }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.role }}</td>
+              <td>
+                <span class="badge" [ngClass]="user.status === 'Active' ? 'bg-success' : 'bg-danger'">
+                  {{ user.status }}
+                </span>
+              </td>
+              <td>
+                <button class="btn btn-sm btn-primary me-2" (click)="viewUser(user.id)">View</button>
+                <button class="btn btn-sm btn-warning me-2" (click)="editUser(user.id)">Edit</button>
+                <button class="btn btn-sm btn-danger" (click)="deleteUser(user.id)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

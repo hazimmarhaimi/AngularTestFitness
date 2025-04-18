@@ -1,0 +1,99 @@
+<!-- src/app/pages/membership/membership.component.html -->
+<div class="container-fluid p-4">
+    <h2 class="mb-4">Add Membership</h2>
+  
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <div *ngIf="errorMessage" class="alert alert-danger mb-3">
+          {{ errorMessage }}
+        </div>
+        <form [formGroup]="membershipForm" (ngSubmit)="onSubmit()">
+          <!-- Name Field -->
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              formControlName="name"
+              placeholder="Enter member's name"
+              [class.is-invalid]="membershipForm.get('name')?.invalid && membershipForm.get('name')?.touched"
+            />
+            <div class="invalid-feedback">
+              Name is required and must be at least 3 characters long.
+            </div>
+          </div>
+  
+          <!-- Email Field -->
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              formControlName="email"
+              placeholder="Enter member's email"
+              [class.is-invalid]="membershipForm.get('email')?.invalid && membershipForm.get('email')?.touched"
+            />
+            <div class="invalid-feedback">
+              Please enter a valid email address.
+            </div>
+          </div>
+  
+          <!-- Phone Field -->
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input
+              type="text"
+              class="form-control"
+              id="phone"
+              formControlName="phone"
+              placeholder="Enter 10-digit phone number"
+              [class.is-invalid]="membershipForm.get('phone')?.invalid && membershipForm.get('phone')?.touched"
+            />
+            <div class="invalid-feedback">
+              Phone number is required and must be a 10-digit number.
+            </div>
+          </div>
+  
+          <!-- Address Field -->
+          <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <textarea
+              class="form-control"
+              id="address"
+              formControlName="address"
+              placeholder="Enter member's address"
+              [class.is-invalid]="membershipForm.get('address')?.invalid && membershipForm.get('address')?.touched"
+            ></textarea>
+            <div class="invalid-feedback">
+              Address is required.
+            </div>
+          </div>
+  
+          <!-- Membership Type Field -->
+          <div class="mb-3">
+            <label for="membershipType" class="form-label">Membership Type</label>
+            <select
+              class="form-select"
+              id="membershipType"
+              formControlName="membershipType"
+              [class.is-invalid]="membershipForm.get('membershipType')?.invalid && membershipForm.get('membershipType')?.touched"
+            >
+              <option value="" disabled>Select a membership type</option>
+              <option *ngFor="let type of membershipTypes" [value]="type">{{ type }}</option>
+            </select>
+            <div class="invalid-feedback">
+              Membership type is required.
+            </div>
+          </div>
+  
+          <!-- Buttons -->
+          <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-secondary me-2" (click)="onCancel()">Cancel</button>
+            <button type="submit" class="btn btn-success" [disabled]="membershipForm.invalid">Save Membership</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

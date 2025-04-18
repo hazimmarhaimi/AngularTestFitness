@@ -1,0 +1,20 @@
+.card {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  zxing-scanner {
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .table {
+    font-size: 0.9rem;
+  }
+  
+  .btn {
+    min-width: 100px;
+  }

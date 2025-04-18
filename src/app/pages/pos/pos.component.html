@@ -1,0 +1,84 @@
+<div class="container-fluid p-4">
+    <h2 class="mb-4">Point of Sale</h2>
+  
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <h5 class="card-title">Scan Membership QR Code</h5>
+        <div *ngIf="errorMessage" class="alert alert-danger mb-3">
+          {{ errorMessage }}
+        </div>
+  
+        <!-- QR Code Scanner -->
+        <div *ngIf="scannerEnabled" class="mb-3">
+          <zxing-scanner
+            [enable]="scannerEnabled"
+            (scanSuccess)="onCodeResult($event)"
+          ></zxing-scanner>
+        </div>
+  
+        <!-- Walk-In Option -->
+        <div *ngIf="!membershipDetails && !walkInUser" class="mb-3">
+          <button class="btn btn-warning" (click)="proceedAsWalkIn()">Proceed as Walk-In</button>
+        </div>
+  
+        <!-- Walk-In Form -->
+        <div *ngIf="walkInUser" class="mb-3">
+          <div class="mb-3">
+            <label for="walkInName" class="form-label">Walk-In User Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="walkInName"
+              [(ngModel)]="walkInName"
+              placeholder="Enter walk-in user's name"
+            />
+          </div>
+          <button class="btn btn-success me-2" (click)="confirmWalkIn()">Confirm</button>
+          <button class="btn btn-secondary" (click)="cancelWalkIn()">Cancel</button>
+        </div>
+  
+        <!-- Membership Details -->
+        <div *ngIf="membershipDetails" class="mb-3">
+          <h6>Membership Details</h6>
+          <p><strong>Name:</strong> {{ membershipDetails.name }}</p>
+          <p><strong>Email:</strong> {{ membershipDetails.email }}</p>
+          <p><strong>Membership Type:</strong> {{ membershipDetails.membershipType }}</p>
+          <p><strong>Expiry Date:</strong> {{ membershipDetails.expiryDate }}</p>
+          <button class="btn btn-danger" (click)="reset()">Clear</button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Product Sales -->
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">Sell Products</h5>
+        <button *ngIf="membershipDetails && !scannerEnabled" class="btn btn-primary mb-3" (click)="scanProduct()">Scan Product</button>
+  
+        <!-- Cart -->
+        <div *ngIf="cart.length > 0" class="mb-3">
+          <h6>Cart</h6>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of cart; let i = index">
+                <td>{{ item.name }}</td>
+                <td>${{ item.price.toFixed(2) }}</td>
+                <td>
+                  <button class="btn btn-sm btn-danger" (click)="removeFromCart(i)">Remove</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <h6>Total: ${{ totalAmount.toFixed(2) }}</h6>
+          <button class="btn btn-success" (click)="checkout()">Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
